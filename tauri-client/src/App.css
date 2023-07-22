@@ -1,24 +1,56 @@
-body {
-  @apply bg-slate-600;
-  @apply text-white;
+.todo-app {
+  @apply container;
+  @apply mx-auto;
+  @apply mt-10;
+  @apply max-w-md;
+}
+
+.todo-title {
+  @apply text-4xl;
   @apply font-bold;
+  @apply mb-4;
 }
 
-.layout {
-  @apply absolute;
-  @apply left-1/2;
-  @apply top-1/2;
-  @apply transform;
-  @apply -translate-x-1/2;
-  @apply -translate-y-[100%];
-}
-
-.ok-btn {
-  @apply ml-1;
+.todo-form {
+  @apply flex;
   @apply border;
-  @apply p-1;
+  @apply rounded-lg;
+  @apply border-gray-300;
 }
 
-#first-input {
-  @apply text-black;
+.todo-form--input {
+  @apply flex-grow;
+  @apply px-4;
+  @apply py-2;
+  @apply focus:outline-none;
+}
+
+.todo-form--btn {
+  @apply px-4;
+  @apply py-2;
+  @apply bg-blue-500;
+  @apply text-white;
+  @apply font-semibold;
+}
+
+.todo-container {
+  @apply mt-6;
+}
+
+.todo-element {
+  @apply flex;
+  @apply justify-between;
+  @apply items-center border-t;
+  @apply border-gray-300 py-2;
+}
+
+.todo-element--text {
+  @apply text-lg;
+}
+
+.todo-element--delete-btn {
+  @apply px-2 py-1;
+  @apply bg-red-500 text-white;
+  @apply font-semibold;
+  @apply rounded-lg;
 }

@@ -1,14 +1,22 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-fn main() {
-    tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet])
-        .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+pub mod commands {
+    pub mod api;
+}
+pub mod models {
+    pub mod todo;
 }
 
-#[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! This was executed from Rust =)", name)
+use commands::api::{add_todo, delete_todo, get_todos};
+
+// Find a way to create tauri commands with satisfication of async functions in the program.
+// Obstackles occur within the Tauri app because of awkwards with asyncs.
+
+fn main() {
+    dotenv::dotenv().ok();
+    tauri::Builder::default()
+        .invoke_handler(tauri::generate_handler![/* ...commands... */])
+        .run(tauri::generate_context!())
+        .expect("error while running tauri application");
 }

@@ -1,0 +1,24 @@
+body {
+  @apply bg-slate-600;
+  @apply text-white;
+  @apply font-bold;
+}
+
+.layout {
+  @apply absolute;
+  @apply left-1/2;
+  @apply top-1/2;
+  @apply transform;
+  @apply -translate-x-1/2;
+  @apply -translate-y-[100%];
+}
+
+.ok-btn {
+  @apply ml-1;
+  @apply border;
+  @apply p-1;
+}
+
+#first-input {
+  @apply text-black;
+}

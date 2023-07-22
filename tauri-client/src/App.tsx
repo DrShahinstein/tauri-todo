@@ -1,48 +1,54 @@
-import React, { SyntheticEvent, useRef } from "react";
-import { invoke } from "@tauri-apps/api/tauri";
+import React, { useState } from "react";
 import "./App.css";
 
-type HandleSubmitFunction = (e: SyntheticEvent) => void;
-
 export default function App(): React.ReactElement {
-  const messageRef = useRef<HTMLSpanElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [todos, setTodos] = useState<string[]>([]);
+  const [inputValue, setInputValue] = useState<string>("");
 
-  const handleSubmit: HandleSubmitFunction = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  const addTodo = (e: React.FormEvent) => {
     e.preventDefault();
-    const msgExists = messageRef.current;
+    if (inputValue.trim() === "") return;
+    setTodos([...todos, inputValue]);
+    setInputValue("");
+  };
 
-    if (msgExists) {
-      messageRef.current.innerText = "";
-    }
-
-    const name = inputRef.current?.value;
-    if (name) {
-      invoke<string>("greet", { name }).then((greeting: string) => {
-        if (msgExists) {
-          messageRef.current.innerText = greeting;
-        }
-        if (inputRef.current?.value) {
-          inputRef.current.value = "";
-        }
-      });
-    }
+  const deleteTodo = (index: number) => {
+    const updatedTodos = todos.filter((_, i) => i !== index);
+    setTodos(updatedTodos);
   };
 
   return (
-    <div className="layout">
-      <div className="inner-layout">
-        <form id="form" onSubmit={handleSubmit}>
-          <label htmlFor="first-input">Enter your name: </label>
-          <input ref={inputRef} id="first-input" type="text" />
-          <button className="ok-btn" type="submit">
-            OK
-          </button>
-          <div>
-            Message: <span ref={messageRef} />
-          </div>
-        </form>
-      </div>
+    <div className="todo-app">
+      <h1 className="todo-title">Todo App</h1>
+      <form className="todo-form" onSubmit={addTodo}>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={handleInputChange}
+          placeholder="Add a todo..."
+          className="todo-form--input"
+        />
+        <button type="submit" className="todo-form--btn">
+          Add
+        </button>
+      </form>
+      <ul className="todo-container">
+        {todos.map((todo, index) => (
+          <li key={index} className="todo-element">
+            <span className="todo-element--text">{todo}</span>
+            <button
+              onClick={() => deleteTodo(index)}
+              className="todo-element--delete-btn"
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

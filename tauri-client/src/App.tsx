@@ -18,14 +18,20 @@ export default function App(): React.ReactElement {
     e.preventDefault();
     if (inputValue.trim() === "") return;
     setTodos([...todos, inputValue]);
-    tauri.invoke("command_add_todo", { text: inputValue });
+    tauri
+      .invoke("command_add_todo", { text: inputValue })
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
     setInputValue("");
   };
 
   const deleteTodo = (index: number) => {
     const updatedTodos = todos.filter((_, i) => i !== index);
     setTodos(updatedTodos);
-    tauri.invoke("command_delete_todo", { id: index });
+    tauri
+      .invoke("command_delete_todo", { id: index })
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
   };
 
   const fetchTodos = () => {

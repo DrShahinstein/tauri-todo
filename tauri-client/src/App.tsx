@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { tauri } from "@tauri-apps/api";
 import "./App.css";
 
 export default function App(): React.ReactElement {
   const [todos, setTodos] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
+
+  useEffect(() => {
+    fetchTodos();
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -13,12 +18,21 @@ export default function App(): React.ReactElement {
     e.preventDefault();
     if (inputValue.trim() === "") return;
     setTodos([...todos, inputValue]);
+    tauri.invoke("command_add_todo", { text: inputValue });
     setInputValue("");
   };
 
   const deleteTodo = (index: number) => {
     const updatedTodos = todos.filter((_, i) => i !== index);
     setTodos(updatedTodos);
+    tauri.invoke("command_delete_todo", { id: index });
+  };
+
+  const fetchTodos = () => {
+    tauri
+      .invoke<string[]>("command_get_todos")
+      .then((res) => setTodos(res))
+      .catch((err) => console.error("Error fetching todos: ", err));
   };
 
   return (

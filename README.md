@@ -1,6 +1,6 @@
-# Todo App
+# Todo App Using Rocket and Tauri
 
-A simple Todo App built using Rocket framework for the backend and Tauri for the frontend. The app allows users to add, delete, and view their todos with a Rocket based server.
+A simple Todo App built using Rocket framework for the backend and Tauri for the frontend. The app allows users to add, delete, and view their todos with a Rocket based server 🚀
 
 ## Features
 
@@ -11,7 +11,7 @@ A simple Todo App built using Rocket framework for the backend and Tauri for the
 
 ## Prerequisites
 
-Before running the app, ensure you have the following dependencies installed:
+Before running the app, make sure you have the following dependencies installed:
 
 - [rust & cargo](https://rustup.rs/)
 - [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#debian-stable)
@@ -42,7 +42,7 @@ You can use tauri-cli within yarn as it already involves it as a dependency. But
 
 ## Contributing
 
-Contributions are unquestionably welcome as this project was already built for learning and discovering Rust purposes. If you find a bug or have an idea for an improvement, feel free to open an issue or submit a pull request.
+Contributions are warmly welcome as this project was built for learning and exploring Rust purposes. If you find a bug or have an idea for an improvement, feel free to open an issue or submit a pull request.
 
 ## License
 

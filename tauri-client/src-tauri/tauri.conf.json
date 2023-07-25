@@ -6,7 +6,7 @@
     "distDir": "../build"
   },
   "package": {
-    "productName": "tauri",
+    "productName": "Tauri Todo App",
     "version": "0.1.0"
   },
   "tauri": {

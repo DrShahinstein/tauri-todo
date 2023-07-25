@@ -23,7 +23,7 @@ You can use tauri-cli within yarn as it already involves it as a dependency. But
 
 1. Clone the repository: `git clone https://www.github.com/DrShahinstein/rocket-tauri-todo.git`
 2. Change your dir to the project dir: `cd rocket-tauri-todo/`
-3. Setup `API_BASE_URL` env variable: `echo "API_BASE_URL='http://127.0.0.1:8000'" > .env`
+3. Setup `API_BASE_URL` env variable: `echo "API_BASE_URL='http://127.0.0.1:8000/api'" > .env`
 4. Setup and run rocket-server: `cargo r --manifest-path rocket-server/Cargo.toml`
 5. Setup frontend: `yarn --cwd tauri-client/`
 6. Setup and run tauri using yarn: `yarn --cwd tauri-client/ tauri dev`

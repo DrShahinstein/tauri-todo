@@ -28,7 +28,7 @@ pub async fn add_todo(text: String) -> Result<String, reqwest::Error> {
     .unwrap()
 }
 
-pub async fn get_todos() -> Result<Vec<String>, reqwest::Error> {
+pub async fn get_todos() -> Result<Vec<Todo>, reqwest::Error> {
     tauri::async_runtime::spawn(async move {
         let url = format!("{}/get_todos", api());
         let client = Client::new();

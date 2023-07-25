@@ -26,8 +26,7 @@ pub fn add_todo(text: String, todos: &State<TodosState>) -> &'static str {
 }
 
 #[get("/get_todos")]
-pub fn get_todos(todos: &State<TodosState>) -> Json<Vec<String>> {
+pub fn get_todos(todos: &State<TodosState>) -> Json<Vec<Todo>> {
     let todos = todos.lock().expect("Failed to lock todos");
-    let todos_json: Vec<String> = todos.iter().map(|todo| todo.text.clone()).collect();
-    Json(todos_json)
+    Json(todos.clone())
 }

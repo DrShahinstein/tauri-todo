@@ -4,7 +4,7 @@ use crate::commands::api::funcs::{add_todo, delete_todo, get_todos};
 use crate::models::todo::Todo;
 
 #[tauri::command]
-pub fn command_get_todos() -> Result<Vec<String>, String> {
+pub fn command_get_todos() -> Result<Vec<Todo>, String> {
     match tauri::async_runtime::block_on(get_todos()) {
         Ok(result) => Ok(result),
         Err(err) => Err(err.to_string()),

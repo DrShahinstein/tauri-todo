@@ -36,7 +36,10 @@ You can use tauri-cli within yarn as it already involves it as a dependency. But
    - `cargo tauri build`
 3. You can specialize `API_BASE_URL` for bundles if you'd like (same goes for releases)
 
-Check out [here](https://tauri.app/v1/guides/building/) for more details.
+If your build somehow fails, try to re-build again using the `--verbose` flag like this: `yarn tauri build --verbose`
+This way, you can keep track of what's going wrong. In my case, where I use an Arch machine, I didn't have the packages of `wget` and `libicui18n.so.72` so my build was not successful. When I had them, everything was okay.
+
+Check out [the original guide](https://tauri.app/v1/guides/building/) of tauri for more details regarding build.
 
 ## API Endpoints
 

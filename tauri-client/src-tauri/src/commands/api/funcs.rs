@@ -3,7 +3,14 @@ use reqwest::Client;
 use std::env;
 
 fn api() -> String {
-    env::var("API_BASE_URL").expect("Missing env variable: API_BASE_URL")
+    match env::var("API_BASE_URL") {
+        Ok(url) => url,
+        Err(_) => {
+            let default_url = "http://127.0.0.1:8000/api";
+            println!("API_BASE_URL environment variable not set. Using default: {}", default_url);
+            default_url.to_string()
+        }
+    }
 }
 
 pub async fn delete_todo(id: usize) -> Option<Todo> {

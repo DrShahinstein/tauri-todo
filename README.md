@@ -34,7 +34,7 @@ You can use tauri-cli within yarn as it already involves it as a dependency. But
 1. Change your dir to `tauri-client/`
 2. Build tauri app using yarn: `yarn tauri build`
    - `cargo tauri build`
-3. Do not forget to have `API_BASE_URL` variable set in the directory where you build it
+3. You can specialize `API_BASE_URL` for bundles if you'd like (same goes for releases)
 
 Check out [here](https://tauri.app/v1/guides/building/) for more details.
 

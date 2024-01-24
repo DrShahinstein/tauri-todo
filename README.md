@@ -1,6 +1,6 @@
 # Todo App Using Tauri and Rocket
 
-A todo app working on desktop using Tauri. This is been a project of mine that I've slightly discovered Tauri. 
+A todo app working on desktop using Tauri. This has been a project of mine that I've slightly discovered Tauri and also been the point where I stopped using React. Nothing but overkill. 
 
 ## Prerequisites
 

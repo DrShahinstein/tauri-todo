@@ -1,13 +1,6 @@
-# Todo App Using Rocket and Tauri
+# Todo App Using Tauri and Rocket
 
-A simple Todo App built using Rocket framework for the backend and Tauri for the frontend. The app allows users to add, delete, and view their todos with a Rocket based server 🚀
-
-## Features
-
-- Add a new todo by entering the text in the input field and clicking "Add" button.
-- Delete a todo by clicking the "Delete" button next to the todo.
-- View all todos in a list.
-- Keep track of what are added and deleted using a Rocket server.
+A todo app working on desktop using Tauri. This is been a project of mine that I've slightly discovered Tauri. 
 
 ## Prerequisites
 
@@ -46,11 +39,3 @@ Check out [the original guide](https://tauri.app/v1/guides/building/) of tauri f
 - `GET /get_todos`: Fetch all todos.
 - `POST /add_todo`: Add a new todo. Payload: `{ "text": "Your todo text" }`.
 - `DELETE /delete_todo/<id>`: Delete a todo with the given ID.
-
-## Contributing
-
-Contributions are warmly welcome as this project was built for learning and exploring Rust purposes. If you find a bug or have an idea for an improvement, feel free to open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the [Do What the Fuck You Want to Public License](https://github.com/DrShahinstein/rocket-tauri-todo/blob/main/LICENSE)
